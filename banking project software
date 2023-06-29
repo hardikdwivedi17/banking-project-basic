@@ -1,0 +1,89 @@
+#include<iostream>
+#include<conio.h>
+
+using namespace std;
+float balance[100];
+int userno()
+{int x;
+	cout<<"enter user id for processing the transactions "<<endl;
+	cin>>x;
+	return x;
+}
+
+
+void start()
+{
+	cout <<"************hello buddy welcome to your ATM************"<<endl;
+	cout<<"1.deposit money"<<endl;
+	cout<<"2.withdraw money"<<endl;
+	cout<<"3.check account balance"<<endl;
+	cout<<"4.exit"<<endl;
+};
+ 
+ void deposit(int n)
+ { float amount;
+	cout<<"enter the amount you want to deposit to account of user "<<n<<"."<<endl;
+   cin>>amount;
+   balance[n]+=amount;
+
+ }
+
+ void withdraw(int n)
+ {
+	float amount;
+	cout<<"enter the amount you want to withdraw to account of user "<<n<<"."<<endl;
+	cin>>amount;
+	if(amount<=balance[n])
+	balance[n]-=amount;
+	else cout<<"not enough balance "<<endl;
+	
+ }
+
+ void viewbalance(int n)
+ {
+	cout<<"the balance amount in account of user no. "<<n<<" is "<<balance[n]<<endl;
+ }
+
+int main()
+{int option,a,n;
+int ch=0;
+
+    do
+	{
+	n=userno();
+	start();
+	cout<<"enter choice of transaction you wish to perform: "<<endl;
+	cin>>option;
+	
+	do
+	{
+	switch(option)
+	{
+		case 1:
+		 deposit(n);
+		break;
+		case 2:
+		 withdraw(n);
+		break;
+		case 3: 
+		 viewbalance(n);
+		break;
+		case 4:
+		 cout<<"program ending"<<endl ;
+		 cin>>a;
+		break;
+	}
+	start();
+	cout<<"enter choice of next transaction"<<endl;
+	cin>>option;
+	}while(option!=4);
+   cout<<"would you like to change the user (Y = 1 or N = 0)"<<endl;
+   cin>>ch;
+	}while(ch==1);
+	cout<<" ************thank you for using our ATM************	"<<endl;
+	cout<<"************have a good day************"<<endl;
+
+
+
+	return 0;
+}
